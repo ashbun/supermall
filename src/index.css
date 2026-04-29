@@ -346,8 +346,23 @@ body {
   line-height: var(--text-b16-lh);
   letter-spacing: var(--text-b16-ls);
   font-weight: 400;
-  background-color: var(--color-surface-primary);
+  background-color: #d0d4dd;
   color: var(--color-text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100dvh;
+}
+
+#root {
+  width: 375px;
+  height: 812px;
+  background-color: var(--color-surface-primary);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
 }
 
 img, video { display: block; max-width: 100%; }
@@ -356,14 +371,19 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ─── Layout Helpers ──────────────────────────────────────────────────────── */
 .root-layout {
-  min-height: 100dvh;
+  height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .root-layout main {
   flex: 1;
   position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .page {

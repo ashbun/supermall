@@ -22,15 +22,17 @@ export default function PLPPage() {
   return (
     <PageTransition>
       <div className="plp">
-        <PLPHeader title="Make up products" />
-        <CategoryTabs
-          categories={mockCategories}
-          activeId={activeCategoryId}
-          onSelect={setActiveCategoryId}
-        />
-        <FilterBar activeFilters={activeFilters} onChipClick={toggleFilter} />
+        <div className="plp__sticky">
+          <PLPHeader title="Make up products" />
+          <CategoryTabs
+            categories={mockCategories}
+            activeId={activeCategoryId}
+            onSelect={setActiveCategoryId}
+          />
+        </div>
 
         <div className="plp__scroll">
+          <FilterBar activeFilters={activeFilters} onChipClick={toggleFilter} />
           <motion.div
             className="plp__grid"
             variants={staggerContainer}
