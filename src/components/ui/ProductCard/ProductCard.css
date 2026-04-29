@@ -193,8 +193,8 @@
 
 /* Divider */
 .product-card__divider {
-  height: 1px;
-  background: var(--color-border-subtle);
+  height: 0;
+  border-top: 1px dashed var(--color-border-subtle);
   width: 100%;
 }
 
