@@ -16,6 +16,7 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-router-dom": "^6.30.3",
+    "retune": "^0.7.6",
     "zustand": "^5.0.12"
   },
   "devDependencies": {

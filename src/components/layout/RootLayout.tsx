@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Retune } from 'retune';
 import { BottomNav } from './BottomNav';
 
 export function RootLayout() {
@@ -13,6 +14,7 @@ export function RootLayout() {
         </AnimatePresence>
       </main>
       <BottomNav />
+      <Retune />
     </div>
   );
 }
