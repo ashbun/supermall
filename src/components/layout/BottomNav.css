@@ -60,6 +60,14 @@
   font-weight: 700;
 }
 
+/* ── Icons ─────────────────────────────────────── */
+.bottom-nav__icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
 /* ── Centre logo ───────────────────────────────────── */
 .bottom-nav__logo {
   flex: 1;

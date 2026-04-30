@@ -32,6 +32,9 @@ const IMG_15_MINUTES = 'https://www.figma.com/api/mcp/asset/850b8459-3171-48a4-8
 const IMG_NOON_NOW = 'https://www.figma.com/api/mcp/asset/9034bc30-fb73-4335-9826-4ab393bfc2c6';
 const IMG_NAMSHI = 'https://www.figma.com/api/mcp/asset/3ed85b6d-bab2-4507-b713-9f391304272f';
 
+const IMG_CURVE_LEFT = 'https://www.figma.com/api/mcp/asset/54134844-7853-467c-9e85-f72025a9ebb0';
+const IMG_CURVE_RIGHT = 'https://www.figma.com/api/mcp/asset/1cd2b318-7218-4452-a5bb-d6e13c833d13';
+
 const serviceTiles = [
   { label: 'noon', variant: 'noon' },
   { label: 'supermall', variant: 'supermall' },
@@ -338,6 +341,9 @@ function ShopByCategory() {
 
   return (
     <section className="home-shop">
+      <img src={IMG_CURVE_LEFT} alt="" className="home-shop__curve home-shop__curve--left" />
+      <img src={IMG_CURVE_RIGHT} alt="" className="home-shop__curve home-shop__curve--right" />
+
       <div className="home-section-header">
         <h2>Shop by category</h2>
         <Link to="/shop">View all ›</Link>
@@ -357,7 +363,7 @@ function ShopByCategory() {
           >
             <span className="home-category-filter__icon">
               {filter.icon === 'heart'
-                ? <HeartFilled size={20} color={activeFilter === filter.label ? 'rgba(33,34,184,1)' : 'var(--grey-400)'} />
+                ? <HeartFilled size={20} color={filter.label === 'For you' || activeFilter === filter.label ? 'rgba(33,34,184,1)' : 'var(--grey-400)'} />
                 : <img src={filter.image} alt="" loading="lazy" />
               }
             </span>
@@ -402,6 +408,7 @@ export default function HomePage() {
         <HeroCategories />
         <ProductRail title="Recommended for you" />
         <ShopByCategory />
+        <ProductRail title="New arrivals" />
         <ProductRail title="Maximise your savings" tone="blue" />
       </div>
     </PageTransition>

@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import { HomeFilled, HomeIcon, GridIcon, PersonIcon, CartIcon } from '../ui/icons';
 import { useCartStore } from '../../store/cartStore';
 import './BottomNav.css';
 
-// Supermall centre logo – expires in 7 days, replace with a local asset
-const IMG_SUPERMALL_LOGO = 'https://www.figma.com/api/mcp/asset/4a26b0fb-086e-41bb-8372-d04abd3b9437';
+// Figma icon assets (7-day expiration - should be replaced with local assets)
+const IMG_HOME_ICON = 'https://www.figma.com/api/mcp/asset/8db7bea9-7539-4fad-b79d-f6554dc594bd';
+const IMG_CATEGORIES_ICON = 'https://www.figma.com/api/mcp/asset/ae5b90a2-e196-490a-bdec-2bd7ba0ab2f5';
+const IMG_ACCOUNT_ICON = 'https://www.figma.com/api/mcp/asset/39491f29-563e-4004-b233-385077ba70a8';
+const IMG_CART_ICON = 'https://www.figma.com/api/mcp/asset/cf8d9202-3ec8-4370-a647-2eefdfeab3fd';
+const IMG_SUPERMALL_LOGO = 'https://www.figma.com/api/mcp/asset/4928877e-20eb-4845-acfe-715ebec66497';
 
 export function BottomNav() {
   const itemCount = useCartStore((s) => s.itemCount());
@@ -20,9 +23,7 @@ export function BottomNav() {
           {({ isActive }) => (
             <>
               <span className="bottom-nav__indicator" />
-              {isActive
-                ? <HomeFilled size={22} color="#2122b8" />
-                : <HomeIcon size={22} color="var(--grey-500)" />}
+              <img src={IMG_HOME_ICON} alt="" className="bottom-nav__icon" />
               <span className="bottom-nav__label">Home</span>
             </>
           )}
@@ -35,7 +36,7 @@ export function BottomNav() {
           {({ isActive }) => (
             <>
               <span className="bottom-nav__indicator" />
-              <GridIcon size={22} color={isActive ? '#2122b8' : 'var(--grey-500)'} />
+              <img src={IMG_CATEGORIES_ICON} alt="" className="bottom-nav__icon" />
               <span className="bottom-nav__label">Categories</span>
             </>
           )}
@@ -55,7 +56,7 @@ export function BottomNav() {
           {({ isActive }) => (
             <>
               <span className="bottom-nav__indicator" />
-              <PersonIcon size={22} color={isActive ? '#2122b8' : 'var(--grey-500)'} />
+              <img src={IMG_ACCOUNT_ICON} alt="" className="bottom-nav__icon" />
               <span className="bottom-nav__label">Account</span>
             </>
           )}
@@ -69,7 +70,7 @@ export function BottomNav() {
             <>
               <span className="bottom-nav__indicator" />
               <div className="bottom-nav__cart-wrap">
-                <CartIcon size={22} color={isActive ? '#2122b8' : 'var(--grey-500)'} />
+                <img src={IMG_CART_ICON} alt="" className="bottom-nav__icon" />
                 {itemCount > 0 && (
                   <span className="bottom-nav__badge">{itemCount > 99 ? '99+' : itemCount}</span>
                 )}
