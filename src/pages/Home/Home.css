@@ -505,14 +505,18 @@
   color: rgba(52, 61, 84, 1);
   white-space: nowrap;
   flex-shrink: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .home-category-filter--active {
   color: rgba(33, 34, 184, 1);
   font-weight: 600;
   background: rgba(244, 244, 255, 1);
-  border-top-left-radius: var(--radius-12);
-  border-top-right-radius: var(--radius-12);
 }
 
 .home-category-filter--active::after {
