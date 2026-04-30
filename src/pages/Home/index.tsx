@@ -5,6 +5,7 @@ import {
   CameraIcon,
   ChevronDown,
   HeartFilled,
+  HeartOutline,
   SearchIcon,
 } from '../../components/ui/icons';
 import type { Product } from '../../types/product';
@@ -64,11 +65,16 @@ const heroCategories = [
   { label: 'Baby care', image: IMG_BABY },
 ];
 
-const shopCategories = [
-  { label: 'For you', image: IMG_PRODUCT_3, active: true },
+const shopFilters = [
+  { label: 'For you', icon: 'heart', active: true },
   { label: 'Beauty', image: IMG_MAKEUP },
-  { label: 'Electronics', image: IMG_HOUSEHOLD },
+  { label: 'Electronics', image: IMG_PRODUCT_4 },
   { label: 'Grocery', image: IMG_SNACKS },
+  { label: 'Health', image: IMG_BEVERAGES },
+  { label: 'Baby care', image: IMG_BABY },
+];
+
+const shopGridItems = [
   { label: 'Headphones', image: IMG_PRODUCT_4 },
   { label: 'Mobiles', image: IMG_PRODUCT_1 },
   { label: 'Makeup', image: IMG_MAKEUP },
@@ -261,11 +267,32 @@ function ShopByCategory() {
         <h2>Shop by category</h2>
         <Link to="/shop">View all ›</Link>
       </div>
-      <div className="home-category-grid">
-        {shopCategories.map((category) => (
+
+      {/* Horizontal scrollable filter tabs */}
+      <div className="home-category-filters">
+        {shopFilters.map((filter) => (
           <Link
             to="/shop"
-            className={`home-category${category.active ? ' home-category--active' : ''}`}
+            className={`home-category-filter${filter.active ? ' home-category-filter--active' : ''}`}
+            key={filter.label}
+          >
+            <span className="home-category-filter__icon">
+              {filter.icon === 'heart'
+                ? <HeartOutline size={20} color={filter.active ? 'var(--supermall-600)' : 'var(--grey-500)'} />
+                : <img src={filter.image} alt="" loading="lazy" />
+              }
+            </span>
+            <span>{filter.label}</span>
+          </Link>
+        ))}
+      </div>
+
+      {/* 4-column grid of sub-categories */}
+      <div className="home-category-grid">
+        {shopGridItems.map((category) => (
+          <Link
+            to="/shop"
+            className="home-category"
             key={category.label}
           >
             <span className="home-category__image">

@@ -487,12 +487,80 @@
   background: var(--colour-neutral-white);
 }
 
+/* Horizontal filter tabs */
+.home-category-filters {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--grey-100);
+  margin-top: 12px;
+}
+
+.home-category-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.home-category-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 82px;
+  padding: 10px 0 12px;
+  position: relative;
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  color: var(--grey-700);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.home-category-filter--active {
+  color: var(--supermall-700);
+  font-weight: 600;
+}
+
+.home-category-filter--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  height: 3px;
+  background: var(--supermall-600);
+  border-radius: 3px 3px 0 0;
+}
+
+.home-category-filter__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--grey-50, #f9f9fb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.home-category-filter--active .home-category-filter__icon {
+  background: #eef0ff;
+}
+
+.home-category-filter__icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* 4-column sub-category grid */
 .home-category-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 8px;
   row-gap: 12px;
-  padding: 12px 12px 0;
+  padding: 16px 12px 0;
 }
 
 .home-category {
@@ -505,8 +573,8 @@
 }
 
 .home-category__image {
-  width: 78px;
-  height: 62px;
+  width: 100%;
+  aspect-ratio: 1;
   border-radius: 8px;
   background: var(--grey-100);
   border: 1px solid var(--grey-100);
@@ -518,18 +586,9 @@
 }
 
 .home-category__image img {
-  width: 64px;
-  height: 54px;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
-}
-
-.home-category--active .home-category__image {
-  background: #eef0ff;
-  border-color: var(--supermall-300);
-}
-
-.home-category--active {
-  color: var(--supermall-800);
 }
 
 .home-page .product-card {
