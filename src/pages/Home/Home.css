@@ -350,23 +350,8 @@
   letter-spacing: 0;
 }
 
-.home-hero__star {
-  position: relative;
-  width: 24px;
-  height: 24px;
-}
-
-.home-hero__star::before,
-.home-hero__star::after {
-  content: '';
-  position: absolute;
-  inset: 11px 0;
-  background: rgba(255, 255, 255, 0.36);
-  border-radius: var(--radius-rounded);
-}
-
-.home-hero__star::after {
-  inset: 0 11px;
+.home-hero__headline svg {
+  flex-shrink: 0;
 }
 
 .home-hero > p {

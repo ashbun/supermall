@@ -7,6 +7,7 @@ import {
   HeartFilled,
   HeartOutline,
   SearchIcon,
+  SparkleIcon,
 } from '../../components/ui/icons';
 import type { Product } from '../../types/product';
 import { DIRHAM } from '../../data/mockProducts';
@@ -225,9 +226,9 @@ function HeroCategories() {
   return (
     <section className="home-hero" aria-label="Fast delivery categories">
       <div className="home-hero__headline">
-        <span className="home-hero__star" aria-hidden="true" />
+        <SparkleIcon size={24} color="rgba(255,255,255,0.25)" aria-hidden="true" />
         <h1>Get everything</h1>
-        <span className="home-hero__star" aria-hidden="true" />
+        <SparkleIcon size={24} color="rgba(255,255,255,0.25)" aria-hidden="true" />
       </div>
       <p>at lightning speed ⚡</p>
       <div className="home-hero__rail">

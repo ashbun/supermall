@@ -151,6 +151,17 @@ export function CameraIcon({ size = 20, color = 'currentColor', className }: Ico
   );
 }
 
+export function SparkleIcon({ size = 24, color = 'rgba(255,255,255,0.25)', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+      <path
+        d="M24 12C13.1868 12.6593 12.6593 13.1868 12 24C11.3407 13.1868 10.8132 12.6593 0 12C10.8132 11.3407 11.3407 10.8132 12 0C12.6593 10.8132 13.1868 11.3407 24 12Z"
+        fill={color}
+      />
+    </svg>
+  );
+}
+
 export function MoonIcon({ size = 12, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 12 12" fill="none" className={className}>
