@@ -473,10 +473,21 @@
   margin-top: 12px;
   background: var(--colour-neutral-white);
   padding: 0 12px 0 0;
+  position: relative;
 }
 
 .home-category-filters::-webkit-scrollbar {
   display: none;
+}
+
+.home-category-filters__indicator {
+  position: absolute;
+  bottom: -1px;
+  height: 3px;
+  background: rgba(33, 34, 184, 1);
+  border-radius: 3px 3px 0 0;
+  transition: left 0.35s cubic-bezier(0.4, 0.0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
+  pointer-events: none;
 }
 
 .home-category-filter {
@@ -517,6 +528,7 @@
   height: 3px;
   background: rgba(33, 34, 184, 1);
   border-radius: 3px 3px 0 0;
+  display: none;
 }
 
 .home-category-filter__icon {

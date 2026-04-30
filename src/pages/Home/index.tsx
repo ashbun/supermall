@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { PageTransition } from '../../components/layout/PageTransition';
@@ -313,7 +313,28 @@ function ProductRail({ title, tone }: { title: string; tone?: 'blue' }) {
 
 function ShopByCategory() {
   const [activeFilter, setActiveFilter] = useState<string>('For you');
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: '0px', width: '0px' });
+  const containerRef = useRef<HTMLDivElement>(null);
   const gridItems = categoryGrids[activeFilter] || categoryGrids['For you'];
+
+  useEffect(() => {
+    const updateIndicator = () => {
+      if (!containerRef.current) return;
+      const activeButton = containerRef.current.querySelector('.home-category-filter--active') as HTMLElement;
+      if (activeButton) {
+        const { left, width } = activeButton.getBoundingClientRect();
+        const containerLeft = containerRef.current.getBoundingClientRect().left;
+        setIndicatorStyle({
+          left: `${left - containerLeft}px`,
+          width: `${width}px`,
+        });
+      }
+    };
+
+    updateIndicator();
+    window.addEventListener('resize', updateIndicator);
+    return () => window.removeEventListener('resize', updateIndicator);
+  }, [activeFilter]);
 
   return (
     <section className="home-shop">
@@ -323,7 +344,11 @@ function ShopByCategory() {
       </div>
 
       {/* Horizontal scrollable filter tabs */}
-      <div className="home-category-filters">
+      <div className="home-category-filters" ref={containerRef}>
+        <div
+          className="home-category-filters__indicator"
+          style={indicatorStyle}
+        />
         {shopFilters.map((filter) => (
           <button
             onClick={() => setActiveFilter(filter.label)}
