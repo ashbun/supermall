@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import { PageTransition } from '../../components/layout/PageTransition';
 import { ProductCard } from '../../components/ui/ProductCard/ProductCard';
 import {
@@ -345,21 +346,30 @@ function ShopByCategory() {
         ))}
       </div>
 
-      {/* 4-column grid of sub-categories */}
-      <div className="home-category-grid">
-        {gridItems.map((category) => (
-          <Link
-            to="/shop"
-            className="home-category"
-            key={category.label}
-          >
-            <span className="home-category__image">
-              <img src={category.image} alt="" loading="lazy" />
-            </span>
-            <span>{category.label}</span>
-          </Link>
-        ))}
-      </div>
+      {/* 4-column grid of sub-categories with animation */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeFilter}
+          className="home-category-grid"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+        >
+          {gridItems.map((category) => (
+            <Link
+              to="/shop"
+              className="home-category"
+              key={category.label}
+            >
+              <span className="home-category__image">
+                <img src={category.image} alt="" loading="lazy" />
+              </span>
+              <span>{category.label}</span>
+            </Link>
+          ))}
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 }
