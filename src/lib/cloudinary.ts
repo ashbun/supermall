@@ -1,7 +1,7 @@
 import { Cloudinary } from '@cloudinary/url-gen';
+import { quality } from '@cloudinary/url-gen/actions/delivery';
 import { auto } from '@cloudinary/url-gen/actions/resize';
 import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
-import { AutoQuality } from '@cloudinary/url-gen/actions/delivery';
 
 // Replace VITE_CLOUDINARY_CLOUD_NAME in your .env file
 export const cld = new Cloudinary({
@@ -26,7 +26,7 @@ export function buildImageUrl(
     );
   }
 
-  img.delivery(AutoQuality.auto());
+  img.delivery(quality('auto'));
 
   return img.toURL();
 }

@@ -1,4 +1,4 @@
-import type { Variants } from 'framer-motion';
+import type { Transition, Variants } from 'framer-motion';
 
 export const pageVariants: Variants = {
   initial:  { opacity: 0, y: 24 },
@@ -6,7 +6,7 @@ export const pageVariants: Variants = {
   exit:     { opacity: 0, y: -24 },
 };
 
-export const pageTransition = {
+export const pageTransition: Transition = {
   duration: 0.4,
   ease: [0.22, 1, 0.36, 1], // custom ease-out-expo
 };
