@@ -233,11 +233,6 @@ function ServiceTile({ label, variant }: { label: string; variant: string }) {
 function HomeHeader() {
   return (
     <section className="home-top" aria-label="Supermall delivery and search">
-      <div className="home-status">
-        <span>9:41</span>
-        <span aria-hidden="true">▰▰▰  ◒  ▱</span>
-      </div>
-
       <div className="home-services" aria-label="noon services">
         {serviceTiles.map((tile) => (
           <ServiceTile key={tile.label} label={tile.label} variant={tile.variant} />
