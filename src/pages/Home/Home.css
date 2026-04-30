@@ -509,6 +509,8 @@
   color: rgba(33, 34, 184, 1);
   font-weight: 600;
   background: rgba(244, 244, 255, 1);
+  border-top-left-radius: var(--radius-12);
+  border-top-right-radius: var(--radius-12);
 }
 
 .home-category-filter--active::after {
