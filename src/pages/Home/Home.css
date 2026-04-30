@@ -475,11 +475,13 @@
 /* Horizontal filter tabs */
 .home-category-filters {
   display: flex;
+  gap: 4px;
   overflow-x: auto;
   scrollbar-width: none;
   border-bottom: 1px solid var(--grey-100);
   margin-top: 12px;
   background: var(--colour-neutral-white);
+  padding: 0 12px;
 }
 
 .home-category-filters::-webkit-scrollbar {
@@ -533,6 +535,7 @@
 
 .home-category-filter--active .home-category-filter__icon {
   background: rgba(255, 255, 255, 1);
+  border-color: var(--grey-200);
 }
 
 .home-category-filter__icon img {
@@ -546,9 +549,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 12px;
-  row-gap: 12px;
-  padding: 16px 12px 16px;
-  background: rgba(244, 244, 255, 1);
+  row-gap: 16px;
+  padding: 16px 12px 12px;
+  background: var(--colour-neutral-white);
 }
 
 .home-category {
