@@ -76,14 +76,14 @@ const shopFilters = [
 ];
 
 const shopGridItems = [
-  { label: 'Headphones', image: IMG_PRODUCT_4 },
-  { label: 'Mobiles', image: IMG_PRODUCT_1 },
   { label: 'Makeup', image: IMG_MAKEUP },
-  { label: 'Babycare', image: IMG_BABY },
-  { label: 'Fresh vegetables', image: IMG_HOUSEHOLD },
-  { label: 'Fresh fruits', image: IMG_BEVERAGES },
-  { label: 'Dairy items', image: IMG_PRODUCT_2 },
+  { label: 'Bath & Body products', image: IMG_PRODUCT_2 },
+  { label: 'Hair care', image: IMG_PRODUCT_3 },
   { label: 'Skincare', image: IMG_PRODUCT_3 },
+  { label: 'Oral care', image: IMG_SNACKS },
+  { label: 'Grooming', image: IMG_BEVERAGES },
+  { label: 'Babycare', image: IMG_BABY },
+  { label: 'Fragrances', image: IMG_PRODUCT_4 },
 ];
 
 const homeProducts: Product[] = [
