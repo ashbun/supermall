@@ -465,6 +465,8 @@
 .home-product-card {
   width: 133px;
   flex: 0 0 133px;
+  display: flex;
+  flex-direction: column;
 }
 
 .home-shop {
@@ -587,6 +589,7 @@
 
 .home-page .product-card {
   width: 133px;
+  flex: 1;
 }
 
 .home-page .product-card__image-wrap {

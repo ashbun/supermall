@@ -1,40 +1,66 @@
 .bottom-nav {
   flex-shrink: 0;
   width: 100%;
-  height: 72px;
   background: var(--colour-neutral-white);
-  border-top: 1px solid var(--color-border-subtle);
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.05), 0 -4px 4.5px rgba(0, 0, 0, 0.04);
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  flex-direction: column;
   z-index: 100;
 }
 
+/* ── Items row ─────────────────────────────────────── */
+.bottom-nav__items {
+  height: 63px;
+  display: flex;
+  align-items: stretch;
+}
+
 .bottom-nav__item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  justify-content: center;
+  gap: 4px;
   flex: 1;
   text-decoration: none;
-  padding: 8px 0;
   -webkit-tap-highlight-color: transparent;
 }
 
-.bottom-nav__item span {
+/* ── Active top pill ───────────────────────────────── */
+.bottom-nav__indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 43px;
+  height: 4px;
+  border-radius: 0 0 8px 8px;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.bottom-nav__item--active .bottom-nav__indicator {
+  background: #2122b8;
+}
+
+/* ── Labels ────────────────────────────────────────── */
+.bottom-nav__label {
   font-family: var(--font-primary);
-  font-size: var(--text-b11-size);
+  font-size: 12px;
   font-weight: 500;
-  color: var(--color-text-muted);
-  line-height: var(--text-b11-lh);
+  color: #475067;
+  line-height: 20px;
+  letter-spacing: -0.16px;
+  white-space: nowrap;
 }
 
-.bottom-nav__item--active span {
-  color: var(--color-text-supermall);
+.bottom-nav__item--active .bottom-nav__label {
+  color: #2122b8;
+  font-weight: 700;
 }
 
-/* Centre logo button */
+/* ── Centre logo ───────────────────────────────────── */
 .bottom-nav__logo {
   flex: 1;
   display: flex;
@@ -43,29 +69,33 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px 0;
+  padding: 0;
   -webkit-tap-highlight-color: transparent;
 }
 
 .bottom-nav__logo-circle {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-rounded);
-  background: linear-gradient(135deg, var(--supermall-600) 0%, var(--supermall-900) 100%);
+  background: #cecff8;
+  overflow: hidden;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px var(--alpha-dark-50);
 }
 
-.bottom-nav__logo-text {
-  font-family: var(--font-primary);
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--colour-neutral-white);
+.bottom-nav__logo-img {
+  position: absolute;
+  width: 57px;
+  height: 57px;
+  top: -2px;
+  left: -8.5px;
+  object-fit: cover;
+  pointer-events: none;
 }
 
-/* Cart badge */
+/* ── Cart badge ────────────────────────────────────── */
 .bottom-nav__cart-wrap {
   position: relative;
 }
@@ -87,4 +117,20 @@
   justify-content: center;
   padding: 0 3px;
   border: 1.5px solid var(--colour-neutral-white);
+}
+
+/* ── iOS home indicator ────────────────────────────── */
+.bottom-nav__home-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0 8px;
+  background: var(--colour-neutral-white);
+}
+
+.bottom-nav__home-indicator {
+  width: 124px;
+  height: 5px;
+  border-radius: 8px;
+  background: #404553;
 }
