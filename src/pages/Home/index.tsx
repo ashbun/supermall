@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PageTransition } from '../../components/layout/PageTransition';
 import { ProductCard } from '../../components/ui/ProductCard/ProductCard';
@@ -67,7 +68,7 @@ const heroCategories = [
 ];
 
 const shopFilters = [
-  { label: 'For you', icon: 'heart', active: true },
+  { label: 'For you', icon: 'heart' },
   { label: 'Beauty', image: IMG_MAKEUP },
   { label: 'Electronics', image: IMG_PRODUCT_4 },
   { label: 'Grocery', image: IMG_SNACKS },
@@ -75,16 +76,69 @@ const shopFilters = [
   { label: 'Baby care', image: IMG_BABY },
 ];
 
-const shopGridItems = [
-  { label: 'Makeup', image: IMG_MAKEUP },
-  { label: 'Bath & Body products', image: IMG_PRODUCT_2 },
-  { label: 'Hair care', image: IMG_PRODUCT_3 },
-  { label: 'Skincare', image: IMG_PRODUCT_3 },
-  { label: 'Oral care', image: IMG_SNACKS },
-  { label: 'Grooming', image: IMG_BEVERAGES },
-  { label: 'Babycare', image: IMG_BABY },
-  { label: 'Fragrances', image: IMG_PRODUCT_4 },
-];
+// Category-specific grids
+const categoryGrids: Record<string, Array<{ label: string; image: string }>> = {
+  'For you': [
+    { label: 'Headphones', image: IMG_PRODUCT_4 },
+    { label: 'Mobiles', image: IMG_PRODUCT_1 },
+    { label: 'Makeup & beauty', image: IMG_MAKEUP },
+    { label: 'Babycare', image: IMG_BABY },
+    { label: 'Fresh vegetables', image: IMG_HOUSEHOLD },
+    { label: 'Fresh fruits', image: IMG_BEVERAGES },
+    { label: 'Dairy items', image: IMG_PRODUCT_2 },
+    { label: 'Skincare', image: IMG_PRODUCT_3 },
+  ],
+  'Beauty': [
+    { label: 'Makeup', image: IMG_MAKEUP },
+    { label: 'Bath & Body products', image: IMG_PRODUCT_2 },
+    { label: 'Hair care', image: IMG_PRODUCT_3 },
+    { label: 'Skincare', image: IMG_PRODUCT_3 },
+    { label: 'Oral care', image: IMG_SNACKS },
+    { label: 'Grooming', image: IMG_BEVERAGES },
+    { label: 'Babycare', image: IMG_BABY },
+    { label: 'Fragrances', image: IMG_PRODUCT_4 },
+  ],
+  'Electronics': [
+    { label: 'Headphones', image: IMG_PRODUCT_4 },
+    { label: 'Mobiles', image: IMG_PRODUCT_1 },
+    { label: 'Laptops', image: IMG_PRODUCT_2 },
+    { label: 'Tablets', image: IMG_PRODUCT_3 },
+    { label: 'Cameras', image: IMG_PRODUCT_4 },
+    { label: 'Audio', image: IMG_PRODUCT_1 },
+    { label: 'Wearables', image: IMG_PRODUCT_2 },
+    { label: 'Accessories', image: IMG_PRODUCT_3 },
+  ],
+  'Grocery': [
+    { label: 'Fresh vegetables', image: IMG_HOUSEHOLD },
+    { label: 'Fresh fruits', image: IMG_BEVERAGES },
+    { label: 'Dairy items', image: IMG_PRODUCT_2 },
+    { label: 'Grains & cereals', image: IMG_SNACKS },
+    { label: 'Spices', image: IMG_PRODUCT_3 },
+    { label: 'Oils & ghee', image: IMG_PRODUCT_4 },
+    { label: 'Snacks', image: IMG_SNACKS },
+    { label: 'Beverages', image: IMG_BEVERAGES },
+  ],
+  'Health': [
+    { label: 'Vitamins', image: IMG_PRODUCT_1 },
+    { label: 'Supplements', image: IMG_PRODUCT_2 },
+    { label: 'Pain relief', image: IMG_PRODUCT_3 },
+    { label: 'Cold & flu', image: IMG_PRODUCT_4 },
+    { label: 'Digestive care', image: IMG_SNACKS },
+    { label: 'Skincare', image: IMG_PRODUCT_3 },
+    { label: 'Baby care', image: IMG_BABY },
+    { label: 'First aid', image: IMG_HOUSEHOLD },
+  ],
+  'Baby care': [
+    { label: 'Diapers', image: IMG_BABY },
+    { label: 'Baby food', image: IMG_SNACKS },
+    { label: 'Bath & care', image: IMG_PRODUCT_2 },
+    { label: 'Feeding', image: IMG_PRODUCT_3 },
+    { label: 'Safety', image: IMG_PRODUCT_4 },
+    { label: 'Clothing', image: IMG_PRODUCT_1 },
+    { label: 'Toys', image: IMG_PRODUCT_2 },
+    { label: 'Health & wellness', image: IMG_BEVERAGES },
+  ],
+};
 
 const homeProducts: Product[] = [
   {
@@ -262,6 +316,9 @@ function ProductRail({ title, tone }: { title: string; tone?: 'blue' }) {
 }
 
 function ShopByCategory() {
+  const [activeFilter, setActiveFilter] = useState<string>('For you');
+  const gridItems = categoryGrids[activeFilter] || categoryGrids['For you'];
+
   return (
     <section className="home-shop">
       <div className="home-section-header">
@@ -272,25 +329,25 @@ function ShopByCategory() {
       {/* Horizontal scrollable filter tabs */}
       <div className="home-category-filters">
         {shopFilters.map((filter) => (
-          <Link
-            to="/shop"
-            className={`home-category-filter${filter.active ? ' home-category-filter--active' : ''}`}
+          <button
+            onClick={() => setActiveFilter(filter.label)}
+            className={`home-category-filter${activeFilter === filter.label ? ' home-category-filter--active' : ''}`}
             key={filter.label}
           >
             <span className="home-category-filter__icon">
               {filter.icon === 'heart'
-                ? <HeartFilled size={20} color={filter.active ? 'rgba(33,34,184,1)' : 'var(--grey-400)'} />
+                ? <HeartFilled size={20} color={activeFilter === filter.label ? 'rgba(33,34,184,1)' : 'var(--grey-400)'} />
                 : <img src={filter.image} alt="" loading="lazy" />
               }
             </span>
             <span>{filter.label}</span>
-          </Link>
+          </button>
         ))}
       </div>
 
       {/* 4-column grid of sub-categories */}
       <div className="home-category-grid">
-        {shopGridItems.map((category) => (
+        {gridItems.map((category) => (
           <Link
             to="/shop"
             className="home-category"
