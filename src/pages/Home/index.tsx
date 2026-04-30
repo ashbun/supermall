@@ -279,7 +279,7 @@ function ShopByCategory() {
           >
             <span className="home-category-filter__icon">
               {filter.icon === 'heart'
-                ? <HeartOutline size={20} color={filter.active ? 'var(--supermall-600)' : 'var(--grey-500)'} />
+                ? <HeartFilled size={20} color={filter.active ? 'rgba(33,34,184,1)' : 'var(--grey-400)'} />
                 : <img src={filter.image} alt="" loading="lazy" />
               }
             </span>
