@@ -142,6 +142,15 @@ export function CartIcon({ size = 24, color = 'currentColor', className }: IconP
   );
 }
 
+export function CameraIcon({ size = 20, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" className={className}>
+      <path d="M7.5 3.5L6.5 5H3C2.45 5 2 5.45 2 6V15C2 15.55 2.45 16 3 16H17C17.55 16 18 15.55 18 15V6C18 5.45 17.55 5 17 5H13.5L12.5 3.5H7.5Z" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="10" cy="10.5" r="2.5" stroke={color} strokeWidth="1.5" />
+    </svg>
+  );
+}
+
 export function MoonIcon({ size = 12, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 12 12" fill="none" className={className}>

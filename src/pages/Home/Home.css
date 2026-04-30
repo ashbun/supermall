@@ -8,7 +8,8 @@
 }
 
 .home-top {
-  height: 320px;
+  height: fit-content;
+  width: 100%;
   background: #12136d;
   color: var(--colour-neutral-white);
   overflow: hidden;
@@ -154,11 +155,11 @@
 }
 
 .home-delivery {
-  height: 56px;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px 4px;
+  padding: var(--space-16) 12px var(--space-12);
 }
 
 .home-delivery__copy {
@@ -179,12 +180,25 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.3px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.home-delivery__addr-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.home-delivery__addr-text {
+  color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .home-heart {
@@ -201,12 +215,12 @@
 
 .home-search {
   height: 48px;
-  margin: 7px 12px 0;
-  border-radius: 6px;
+  margin: var(--space-0) 12px var(--space-8);
+  border-radius: 8px;
   background: var(--colour-neutral-white);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 0 12px;
 }
 
@@ -244,12 +258,11 @@
 }
 
 .home-tabs {
-  height: 64px;
+  height: 56px;
   display: flex;
   align-items: flex-start;
   overflow-x: auto;
   scrollbar-width: none;
-  padding-top: 9px;
 }
 
 .home-tabs::-webkit-scrollbar {
@@ -259,32 +272,45 @@
 .home-tab {
   position: relative;
   width: 76px;
+  height: 56px;
   flex: 0 0 76px;
   border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   background: transparent;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.63);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 0;
   font-family: var(--font-primary);
   font-size: 11px;
   font-weight: 500;
   line-height: 14px;
+  letter-spacing: -0.16px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-tab__icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .home-tab--active {
   color: var(--colour-neutral-white);
+  font-weight: 600;
 }
 
 .home-tab--active::after {
   content: '';
   position: absolute;
   left: 12px;
-  right: 12px;
-  bottom: -11px;
+  width: 52px;
+  bottom: -1px;
   height: 2.5px;
-  border-radius: var(--radius-rounded);
+  border-radius: 8px 8px 0 0;
   background: var(--colour-neutral-white);
 }
 

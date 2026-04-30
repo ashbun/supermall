@@ -2,12 +2,9 @@ import { Link } from 'react-router-dom';
 import { PageTransition } from '../../components/layout/PageTransition';
 import { ProductCard } from '../../components/ui/ProductCard/ProductCard';
 import {
-  CartIcon,
+  CameraIcon,
   ChevronDown,
-  GridIcon,
   HeartFilled,
-  HomeFilled,
-  PersonIcon,
   SearchIcon,
 } from '../../components/ui/icons';
 import type { Product } from '../../types/product';
@@ -41,12 +38,22 @@ const serviceTiles = [
   { label: 'Pay', variant: 'pay' },
 ];
 
+const TAB_ICON_ALL        = 'https://www.figma.com/api/mcp/asset/98a1abae-8fb4-405d-86ae-d2232baf88e6';
+const TAB_ICON_ELECTRONICS = 'https://www.figma.com/api/mcp/asset/6c641355-3ad2-46ed-9fe3-91ac0f12999a';
+const TAB_ICON_BEAUTY      = 'https://www.figma.com/api/mcp/asset/f0fd7b0b-fed9-4dda-9e26-142ed112501e';
+const TAB_ICON_GROCERY     = 'https://www.figma.com/api/mcp/asset/ecc59200-a8fe-4ab2-80fe-a94ffb8ea001';
+const TAB_ICON_FASHION     = 'https://www.figma.com/api/mcp/asset/dc24ca6c-d264-4789-8ac6-98234ac9b801';
+const TAB_ICON_WELLNESS    = 'https://www.figma.com/api/mcp/asset/1e50ff2f-217a-4075-85cd-1e24a227d838';
+const TAB_ICON_HOME        = 'https://www.figma.com/api/mcp/asset/f5b5f8aa-2991-4aaa-b48f-066246e2dba7';
+
 const topTabs = [
-  { label: 'All', icon: GridIcon, active: true },
-  { label: 'Electronics', icon: PersonIcon },
-  { label: 'Beauty', icon: PersonIcon },
-  { label: 'Grocery', icon: CartIcon },
-  { label: 'Fashion', icon: HomeFilled },
+  { label: 'All',         icon: TAB_ICON_ALL,         active: true },
+  { label: 'Electronics', icon: TAB_ICON_ELECTRONICS },
+  { label: 'Beauty',      icon: TAB_ICON_BEAUTY },
+  { label: 'Grocery',     icon: TAB_ICON_GROCERY },
+  { label: 'Fashion',     icon: TAB_ICON_FASHION },
+  { label: 'Wellness',    icon: TAB_ICON_WELLNESS },
+  { label: 'Home',        icon: TAB_ICON_HOME },
 ];
 
 const heroCategories = [
@@ -179,8 +186,9 @@ function HomeHeader() {
         <div className="home-delivery__copy">
           <strong>⚡ 1 hr 15 mins delivery</strong>
           <span>
-            Home - BDA Complex, 100 Feet Rd 3rd Bloc...
-            <ChevronDown size={14} color="rgba(255,255,255,0.72)" />
+            <span className="home-delivery__addr-label">Home - </span>
+            <span className="home-delivery__addr-text">BDA Complex, 100 Feet Rd 3rd Block, Kora...</span>
+            <ChevronDown size={14} color="rgba(255,255,255,0.6)" />
           </span>
         </div>
         <button className="home-heart" aria-label="Favorites">
@@ -192,19 +200,16 @@ function HomeHeader() {
         <SearchIcon size={22} color="var(--grey-600)" />
         <input value="" readOnly placeholder='Search for "Maybelline 1014"' />
         <span className="home-search__divider" />
-        <button type="button" aria-label="Visual search">▣</button>
+        <button type="button" aria-label="Visual search"><CameraIcon size={20} color="var(--grey-600)" /></button>
       </label>
 
       <nav className="home-tabs" aria-label="Homepage departments">
-        {topTabs.map((tab) => {
-          const Icon = tab.icon;
-          return (
-            <button className={`home-tab${tab.active ? ' home-tab--active' : ''}`} key={tab.label}>
-              <Icon size={22} color={tab.active ? '#ffffff' : 'rgba(255,255,255,0.72)'} />
-              <span>{tab.label}</span>
-            </button>
-          );
-        })}
+        {topTabs.map((tab) => (
+          <button className={`home-tab${tab.active ? ' home-tab--active' : ''}`} key={tab.label}>
+            <img src={tab.icon} alt="" className="home-tab__icon" />
+            <span>{tab.label}</span>
+          </button>
+        ))}
       </nav>
     </section>
   );
