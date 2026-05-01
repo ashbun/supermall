@@ -10,7 +10,7 @@
 .home-top {
   height: fit-content;
   width: 100%;
-  background-color: transparent;
+  background-color: #131d7e;
   background-image: none;
   color: var(--colour-neutral-white);
   overflow: hidden;
@@ -335,7 +335,7 @@
 }
 
 .home-hero--electronics {
-  height: 244px;
+  height: 247px;
   background: linear-gradient(180deg, #210a3b 10.28%, #130228 51.65%);
 }
 
@@ -345,13 +345,11 @@
 
 .home-hero__backdrop {
   position: absolute;
-  left: -37px;
-  top: -61px;
-  width: 449px;
+  left: -12.5px;
+  top: -58px;
+  width: 400px;
   height: 306.79px;
-  object-fit: cover;
-  object-position: top center;
-  opacity: 0.94;
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -362,21 +360,23 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding-top: 30px;
+  width: 260px;
+  margin: 0 auto;
+  padding-top: 34px;
 }
 
 .home-hero__promo-title {
   margin: 0;
   font-family: "Noontree", var(--font-primary);
-  font-size: 32px;
+  font-size: var(--space-20);
   line-height: 31px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.82);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: -0.3px;
 }
 
 .home-hero__promo-badge {
-  width: 66px;
+  width: 65.59px;
   height: 48px;
   object-fit: contain;
   pointer-events: none;
@@ -453,7 +453,6 @@
   height: 92px;
   border: 0.5px solid rgba(255, 255, 255, 0.56);
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(3px);
 }
 
 .home-hero-card span {
@@ -469,7 +468,7 @@
 }
 
 .home-hero-card--electronics span {
-  top: 11px;
+  top: 10.79px;
   left: 8px;
   right: 8px;
   font-size: 12px;
@@ -487,12 +486,61 @@
   object-fit: contain;
 }
 
-.home-hero-card--electronics img {
-  left: 50%;
-  bottom: -2px;
-  width: 84px;
-  height: 64px;
-  transform: translateX(-50%);
+.home-hero-card__asset {
+  position: absolute;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.home-hero-card__asset--headphone {
+  left: 14.74px;
+  top: 32.68px;
+  width: 55.8px;
+  height: 61.67px;
+}
+
+.home-hero-card__asset--mobiles {
+  left: 17.69px;
+  top: 40.42px;
+  width: 47.61px;
+  height: 58.82px;
+}
+
+.home-hero-card__asset--laptop {
+  left: -0.51px;
+  top: 30.83px;
+  width: 84.01px;
+  height: 64.52px;
+}
+
+.home-hero-card__asset--smartwatch {
+  left: 17.85px;
+  top: 35.95px;
+  width: 51.24px;
+  height: 51.24px;
+}
+
+.home-hero-card__asset--other-base {
+  left: -4.04px;
+  top: 46.91px;
+  width: 45.94px;
+  height: 45.94px;
+  transform: rotate(-17.5deg);
+  transform-origin: center;
+}
+
+.home-hero-card__asset--other-stick {
+  left: 31.42px;
+  top: 37.24px;
+  width: 20.97px;
+  height: 61.22px;
+}
+
+.home-hero-card__asset--other-glow {
+  left: 33.04px;
+  top: 46.91px;
+  width: 54px;
+  height: 54.81px;
 }
 
 .home-section-header {

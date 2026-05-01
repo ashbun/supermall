@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useCartStore } from '../../../store/cartStore';
 import type { Product } from '../../../types/product';
@@ -14,12 +14,15 @@ const TAG_STYLES: Record<string, { bg: string; color: string }> = {
   sale:       { bg: 'var(--red-700)', color: 'var(--colour-neutral-white)' },
 };
 
+const PDP_ROUTE = '/product/galaxy-s25-ultra';
+
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
   const navigate = useNavigate();
+  const location = useLocation();
   const [wishlisted, setWishlisted] = useState(false);
   const [imgIndex] = useState(0);
 
@@ -60,7 +63,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <article
       className="product-card"
-      onClick={() => navigate(`/product/${product.id}`)}
+      onClick={() => navigate(PDP_ROUTE, { state: { from: `${location.pathname}${location.search}` } })}
       role="button"
       tabIndex={0}
     >
@@ -87,7 +90,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Wishlist */}
         <motion.button
           className="product-card__wishlist"
-          onClick={(e) => { e.stopPropagation(); setWishlisted((w) => !w); }}
+          onClick={() => { setWishlisted((w) => !w); }}
           whileTap={{ scale: 0.85 }}
           aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
         >

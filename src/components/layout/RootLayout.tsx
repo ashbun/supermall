@@ -5,6 +5,7 @@ import { BottomNav } from './BottomNav';
 
 export function RootLayout() {
   const location = useLocation();
+  const hideBottomNav = location.pathname.startsWith('/product/');
 
   return (
     <div className="root-layout">
@@ -13,7 +14,7 @@ export function RootLayout() {
           <Outlet key={location.pathname} />
         </AnimatePresence>
       </main>
-      <BottomNav />
+      {!hideBottomNav && <BottomNav />}
       <Retune />
     </div>
   );

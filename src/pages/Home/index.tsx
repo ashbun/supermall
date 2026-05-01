@@ -34,13 +34,15 @@ const IMG_NAMSHI = 'https://www.figma.com/api/mcp/asset/3ed85b6d-bab2-4507-b713-
 
 const IMG_CURVE_LEFT = 'https://www.figma.com/api/mcp/asset/54134844-7853-467c-9e85-f72025a9ebb0';
 const IMG_CURVE_RIGHT = 'https://www.figma.com/api/mcp/asset/1cd2b318-7218-4452-a5bb-d6e13c833d13';
-const IMG_ELECTRONICS_HERO_BG = 'https://www.figma.com/api/mcp/asset/5a16e474-bea2-4be2-8326-f9d29c995039';
-const IMG_ELECTRONICS_HERO_ACCENT = 'https://www.figma.com/api/mcp/asset/db0078d7-6ded-4f6c-84b7-9db5765d9858';
-const IMG_ELECTRONICS_CARD_HEADPHONES = 'https://www.figma.com/api/mcp/asset/e5b74c8d-ad8c-49b5-9458-cd3f8cdc4ad6';
-const IMG_ELECTRONICS_CARD_MOBILES = 'https://www.figma.com/api/mcp/asset/2dab9e09-6d64-4eb9-91b4-7915522eeec3';
-const IMG_ELECTRONICS_CARD_LAPTOP = 'https://www.figma.com/api/mcp/asset/59ecf51a-e889-4f45-ba4b-345b537b7f5a';
-const IMG_ELECTRONICS_CARD_SMARTWATCH = 'https://www.figma.com/api/mcp/asset/eafa8f0f-f4c3-40ee-ac5f-d6046bb3b4a9';
-const IMG_ELECTRONICS_CARD_OTHER = 'https://www.figma.com/api/mcp/asset/10f750e9-cc1b-4ce2-8087-5a4c2a933446';
+const IMG_ELECTRONICS_HERO_BG = 'https://www.figma.com/api/mcp/asset/147dc37e-5ee8-4782-b3dd-ab920cfafc66';
+const IMG_ELECTRONICS_HERO_ACCENT = 'https://www.figma.com/api/mcp/asset/1024ab67-b43f-4b23-afde-5deaa67f7914';
+const IMG_ELECTRONICS_CARD_HEADPHONES = 'https://www.figma.com/api/mcp/asset/094c04ac-f79c-4c06-8ade-22181db0946e';
+const IMG_ELECTRONICS_CARD_MOBILES = 'https://www.figma.com/api/mcp/asset/b1e70809-996a-4072-86dd-7d873070084c';
+const IMG_ELECTRONICS_CARD_LAPTOP = 'https://www.figma.com/api/mcp/asset/1e2a350a-0980-4cf7-bfde-7cb9a2914e94';
+const IMG_ELECTRONICS_CARD_SMARTWATCH = 'https://www.figma.com/api/mcp/asset/01dddcac-8098-4c82-bfe8-cc0fc65b11d9';
+const IMG_ELECTRONICS_CARD_OTHER_BASE = 'https://www.figma.com/api/mcp/asset/99004fdc-dc06-4bd6-be0e-88b69adfd4b2';
+const IMG_ELECTRONICS_CARD_OTHER_STICK = 'https://www.figma.com/api/mcp/asset/78647fe0-cff2-4379-acaa-87556f634b3c';
+const IMG_ELECTRONICS_CARD_OTHER_GLOW = 'https://www.figma.com/api/mcp/asset/07c86e6d-b38b-4cf3-9d94-5215a8f7dcf3';
 
 const serviceTiles = [
   { label: 'noon', variant: 'noon' },
@@ -71,13 +73,42 @@ const heroCategories = [
   { label: 'Baby care', image: IMG_BABY },
 ];
 
+type ElectronicsHeroLayer = {
+  className: string;
+  src: string;
+};
+
+type ElectronicsHeroCategory = {
+  label: string;
+  layers: ElectronicsHeroLayer[];
+};
+
 const electronicsHeroCategories = [
-  { label: 'Headphone', image: IMG_ELECTRONICS_CARD_HEADPHONES },
-  { label: 'Mobiles', image: IMG_ELECTRONICS_CARD_MOBILES },
-  { label: 'Laptop', image: IMG_ELECTRONICS_CARD_LAPTOP },
-  { label: 'Smartwatch', image: IMG_ELECTRONICS_CARD_SMARTWATCH },
-  { label: 'Other', image: IMG_ELECTRONICS_CARD_OTHER },
-];
+  {
+    label: 'Headphone',
+    layers: [{ className: 'home-hero-card__asset--headphone', src: IMG_ELECTRONICS_CARD_HEADPHONES }],
+  },
+  {
+    label: 'Mobiles',
+    layers: [{ className: 'home-hero-card__asset--mobiles', src: IMG_ELECTRONICS_CARD_MOBILES }],
+  },
+  {
+    label: 'Laptop',
+    layers: [{ className: 'home-hero-card__asset--laptop', src: IMG_ELECTRONICS_CARD_LAPTOP }],
+  },
+  {
+    label: 'Smartwatch',
+    layers: [{ className: 'home-hero-card__asset--smartwatch', src: IMG_ELECTRONICS_CARD_SMARTWATCH }],
+  },
+  {
+    label: 'Other',
+    layers: [
+      { className: 'home-hero-card__asset--other-base', src: IMG_ELECTRONICS_CARD_OTHER_BASE },
+      { className: 'home-hero-card__asset--other-stick', src: IMG_ELECTRONICS_CARD_OTHER_STICK },
+      { className: 'home-hero-card__asset--other-glow', src: IMG_ELECTRONICS_CARD_OTHER_GLOW },
+    ],
+  },
+] satisfies ElectronicsHeroCategory[];
 
 const shopFilters = [
   { label: 'For you', icon: 'heart' },
@@ -298,7 +329,6 @@ function HomeHeader({ activeTab, onTabChange }: { activeTab: TopTab; onTabChange
 
 function HeroCategories({ activeTab }: { activeTab: TopTab }) {
   const isElectronics = activeTab === 'Electronics';
-  const categories = isElectronics ? electronicsHeroCategories : heroCategories;
 
   return (
     <section
@@ -334,16 +364,35 @@ function HeroCategories({ activeTab }: { activeTab: TopTab }) {
         </>
       )}
       <div className={`home-hero__rail${isElectronics ? ' home-hero__rail--electronics' : ''}`}>
-        {categories.map((category) => (
-          <Link
-            to="/shop"
-            className={`home-hero-card${isElectronics ? ' home-hero-card--electronics' : ''}`}
-            key={category.label}
-          >
-            <span>{category.label}</span>
-            <img src={category.image} alt="" loading="lazy" />
-          </Link>
-        ))}
+        {isElectronics
+          ? electronicsHeroCategories.map((category) => (
+              <Link
+                to="/shop"
+                className="home-hero-card home-hero-card--electronics"
+                key={category.label}
+              >
+                <span>{category.label}</span>
+                {category.layers.map((layer) => (
+                  <img
+                    key={layer.className}
+                    src={layer.src}
+                    alt=""
+                    loading="lazy"
+                    className={`home-hero-card__asset ${layer.className}`}
+                  />
+                ))}
+              </Link>
+            ))
+          : heroCategories.map((category) => (
+              <Link
+                to="/shop"
+                className="home-hero-card"
+                key={category.label}
+              >
+                <span>{category.label}</span>
+                <img src={category.image} alt="" loading="lazy" />
+              </Link>
+            ))}
       </div>
     </section>
   );

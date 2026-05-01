@@ -96,6 +96,14 @@ export function ChevronDown({ size = 12, color = 'currentColor', className }: Ic
   );
 }
 
+export function ChevronRight({ size = 20, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" className={className}>
+      <path d="M7.5 5L12.5 10L7.5 15" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function HomeIcon({ size = 24, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
@@ -166,6 +174,30 @@ export function MoonIcon({ size = 12, color = 'currentColor', className }: IconP
   return (
     <svg width={size} height={size} viewBox="0 0 12 12" fill="none" className={className}>
       <path d="M10 6.5C9.5 8.5 7.7 10 5.5 10C3 10 1 8 1 5.5C1 3.3 2.5 1.5 4.5 1C3.5 2 3 3.2 3 4.5C3 7 5 9 7.5 9C8.7 9 9.8 8.5 10.6 7.7C10.4 7.3 10.2 6.9 10 6.5Z" fill={color} />
+    </svg>
+  );
+}
+
+export function ShareIcon({ size = 20, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" className={className}>
+      <path
+        d="M13.958 6.04167C14.8785 6.04167 15.625 5.29514 15.625 4.37467C15.625 3.45419 14.8785 2.70767 13.958 2.70767C13.0375 2.70767 12.291 3.45419 12.291 4.37467C12.291 5.29514 13.0375 6.04167 13.958 6.04167Z"
+        stroke={color}
+        strokeWidth="1.5"
+      />
+      <path
+        d="M5.62598 11.6667C6.54646 11.6667 7.29298 10.9202 7.29298 9.99967C7.29298 9.0792 6.54646 8.33267 5.62598 8.33267C4.70551 8.33267 3.95898 9.0792 3.95898 9.99967C3.95898 10.9202 4.70551 11.6667 5.62598 11.6667Z"
+        stroke={color}
+        strokeWidth="1.5"
+      />
+      <path
+        d="M13.958 17.2917C14.8785 17.2917 15.625 16.5451 15.625 15.6247C15.625 14.7042 14.8785 13.9577 13.958 13.9577C13.0375 13.9577 12.291 14.7042 12.291 15.6247C12.291 16.5451 13.0375 17.2917 13.958 17.2917Z"
+        stroke={color}
+        strokeWidth="1.5"
+      />
+      <path d="M7.12695 10.8398L12.4561 14.7848" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M12.4561 5.21484L7.12695 9.15984" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }

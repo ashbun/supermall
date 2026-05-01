@@ -15,7 +15,7 @@ export function AddToCart({ count, onAdd, onRemove }: AddToCartProps) {
         <motion.button
           key="idle"
           className="atc atc--idle"
-          onClick={(e) => { e.stopPropagation(); onAdd(); }}
+          onClick={onAdd}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
@@ -36,7 +36,7 @@ export function AddToCart({ count, onAdd, onRemove }: AddToCartProps) {
         >
           <button
             className="atc__action"
-            onClick={(e) => { e.stopPropagation(); onRemove(); }}
+            onClick={onRemove}
             aria-label="Remove one"
           >
             {count === 1
@@ -56,7 +56,7 @@ export function AddToCart({ count, onAdd, onRemove }: AddToCartProps) {
           </motion.span>
           <button
             className="atc__action"
-            onClick={(e) => { e.stopPropagation(); onAdd(); }}
+            onClick={onAdd}
             aria-label="Add one more"
           >
             <PlusIcon size={24} color="#fff" />
