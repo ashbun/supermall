@@ -20,7 +20,7 @@ export function BottomNav() {
           end
           className={({ isActive }) => `bottom-nav__item${isActive ? ' bottom-nav__item--active' : ''}`}
         >
-          {({ isActive }) => (
+          {() => (
             <>
               <span className="bottom-nav__indicator" />
               <img src={IMG_HOME_ICON} alt="" className="bottom-nav__icon" />
@@ -33,7 +33,7 @@ export function BottomNav() {
           to="/shop"
           className={({ isActive }) => `bottom-nav__item${isActive ? ' bottom-nav__item--active' : ''}`}
         >
-          {({ isActive }) => (
+          {() => (
             <>
               <span className="bottom-nav__indicator" />
               <img src={IMG_CATEGORIES_ICON} alt="" className="bottom-nav__icon" />
@@ -53,7 +53,7 @@ export function BottomNav() {
           to="/account"
           className={({ isActive }) => `bottom-nav__item${isActive ? ' bottom-nav__item--active' : ''}`}
         >
-          {({ isActive }) => (
+          {() => (
             <>
               <span className="bottom-nav__indicator" />
               <img src={IMG_ACCOUNT_ICON} alt="" className="bottom-nav__icon" />
@@ -66,7 +66,7 @@ export function BottomNav() {
           to="/cart"
           className={({ isActive }) => `bottom-nav__item${isActive ? ' bottom-nav__item--active' : ''}`}
         >
-          {({ isActive }) => (
+          {() => (
             <>
               <span className="bottom-nav__indicator" />
               <div className="bottom-nav__cart-wrap">

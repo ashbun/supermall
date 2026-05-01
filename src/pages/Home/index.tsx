@@ -7,12 +7,12 @@ import {
   CameraIcon,
   ChevronDown,
   HeartFilled,
-  HeartOutline,
   SearchIcon,
   SparkleIcon,
 } from '../../components/ui/icons';
 import type { Product } from '../../types/product';
 import { DIRHAM } from '../../data/mockProducts';
+import { homeTabIconAssets } from './tabIcons';
 import './Home.css';
 
 const IMG_SNACKS = 'https://www.figma.com/api/mcp/asset/26c9bba6-f436-4dce-91b6-6ac714a249de';
@@ -34,6 +34,13 @@ const IMG_NAMSHI = 'https://www.figma.com/api/mcp/asset/3ed85b6d-bab2-4507-b713-
 
 const IMG_CURVE_LEFT = 'https://www.figma.com/api/mcp/asset/54134844-7853-467c-9e85-f72025a9ebb0';
 const IMG_CURVE_RIGHT = 'https://www.figma.com/api/mcp/asset/1cd2b318-7218-4452-a5bb-d6e13c833d13';
+const IMG_ELECTRONICS_HERO_BG = 'https://www.figma.com/api/mcp/asset/5a16e474-bea2-4be2-8326-f9d29c995039';
+const IMG_ELECTRONICS_HERO_ACCENT = 'https://www.figma.com/api/mcp/asset/db0078d7-6ded-4f6c-84b7-9db5765d9858';
+const IMG_ELECTRONICS_CARD_HEADPHONES = 'https://www.figma.com/api/mcp/asset/e5b74c8d-ad8c-49b5-9458-cd3f8cdc4ad6';
+const IMG_ELECTRONICS_CARD_MOBILES = 'https://www.figma.com/api/mcp/asset/2dab9e09-6d64-4eb9-91b4-7915522eeec3';
+const IMG_ELECTRONICS_CARD_LAPTOP = 'https://www.figma.com/api/mcp/asset/59ecf51a-e889-4f45-ba4b-345b537b7f5a';
+const IMG_ELECTRONICS_CARD_SMARTWATCH = 'https://www.figma.com/api/mcp/asset/eafa8f0f-f4c3-40ee-ac5f-d6046bb3b4a9';
+const IMG_ELECTRONICS_CARD_OTHER = 'https://www.figma.com/api/mcp/asset/10f750e9-cc1b-4ce2-8087-5a4c2a933446';
 
 const serviceTiles = [
   { label: 'noon', variant: 'noon' },
@@ -45,23 +52,16 @@ const serviceTiles = [
   { label: 'Pay', variant: 'pay' },
 ];
 
-const TAB_ICON_ALL        = 'https://www.figma.com/api/mcp/asset/98a1abae-8fb4-405d-86ae-d2232baf88e6';
-const TAB_ICON_ELECTRONICS = 'https://www.figma.com/api/mcp/asset/6c641355-3ad2-46ed-9fe3-91ac0f12999a';
-const TAB_ICON_BEAUTY      = 'https://www.figma.com/api/mcp/asset/f0fd7b0b-fed9-4dda-9e26-142ed112501e';
-const TAB_ICON_GROCERY     = 'https://www.figma.com/api/mcp/asset/ecc59200-a8fe-4ab2-80fe-a94ffb8ea001';
-const TAB_ICON_FASHION     = 'https://www.figma.com/api/mcp/asset/dc24ca6c-d264-4789-8ac6-98234ac9b801';
-const TAB_ICON_WELLNESS    = 'https://www.figma.com/api/mcp/asset/1e50ff2f-217a-4075-85cd-1e24a227d838';
-const TAB_ICON_HOME        = 'https://www.figma.com/api/mcp/asset/f5b5f8aa-2991-4aaa-b48f-066246e2dba7';
-
 const topTabs = [
-  { label: 'All',         icon: TAB_ICON_ALL,         active: true },
-  { label: 'Electronics', icon: TAB_ICON_ELECTRONICS },
-  { label: 'Beauty',      icon: TAB_ICON_BEAUTY },
-  { label: 'Grocery',     icon: TAB_ICON_GROCERY },
-  { label: 'Fashion',     icon: TAB_ICON_FASHION },
-  { label: 'Wellness',    icon: TAB_ICON_WELLNESS },
-  { label: 'Home',        icon: TAB_ICON_HOME },
-];
+  { label: 'All', icon: homeTabIconAssets.all },
+  { label: 'Electronics', icon: homeTabIconAssets.electronics },
+  { label: 'Beauty', icon: homeTabIconAssets.beauty },
+  { label: 'Grocery', icon: homeTabIconAssets.grocery },
+  { label: 'Pharmacy', icon: homeTabIconAssets.pharmacy },
+  { label: 'Babycare', icon: homeTabIconAssets.babycare },
+  { label: 'Gifting', icon: homeTabIconAssets.gifting },
+] as const;
+type TopTab = typeof topTabs[number]['label'];
 
 const heroCategories = [
   { label: 'Snacks', image: IMG_SNACKS },
@@ -69,6 +69,14 @@ const heroCategories = [
   { label: 'Makeup', image: IMG_MAKEUP },
   { label: 'Beverages', image: IMG_BEVERAGES },
   { label: 'Baby care', image: IMG_BABY },
+];
+
+const electronicsHeroCategories = [
+  { label: 'Headphone', image: IMG_ELECTRONICS_CARD_HEADPHONES },
+  { label: 'Mobiles', image: IMG_ELECTRONICS_CARD_MOBILES },
+  { label: 'Laptop', image: IMG_ELECTRONICS_CARD_LAPTOP },
+  { label: 'Smartwatch', image: IMG_ELECTRONICS_CARD_SMARTWATCH },
+  { label: 'Other', image: IMG_ELECTRONICS_CARD_OTHER },
 ];
 
 const shopFilters = [
@@ -155,7 +163,6 @@ const homeProducts: Product[] = [
     currency: DIRHAM,
     rating: 4.3,
     reviewCount: 128,
-    tag: { label: 'Best seller', variant: 'bestseller' },
     deal: 'Ramdan deal',
     isSponsored: true,
   },
@@ -169,7 +176,6 @@ const homeProducts: Product[] = [
     currency: DIRHAM,
     rating: 4.3,
     reviewCount: 128,
-    tag: { label: 'Best seller', variant: 'bestseller' },
     isSponsored: true,
   },
   {
@@ -182,7 +188,6 @@ const homeProducts: Product[] = [
     currency: DIRHAM,
     rating: 4.3,
     reviewCount: 128,
-    tag: { label: 'Best seller', variant: 'bestseller' },
     isSponsored: true,
   },
   {
@@ -195,7 +200,6 @@ const homeProducts: Product[] = [
     currency: DIRHAM,
     rating: 4.3,
     reviewCount: 128,
-    tag: { label: 'Best seller', variant: 'bestseller' },
   },
 ];
 
@@ -233,16 +237,19 @@ function ServiceTile({ label, variant }: { label: string; variant: string }) {
   );
 }
 
-function HomeHeader() {
+function HomeHeader({ activeTab, onTabChange }: { activeTab: TopTab; onTabChange: (tab: TopTab) => void }) {
   return (
-    <section className="home-top" aria-label="Supermall delivery and search">
+    <section
+      className={`home-top${activeTab === 'Electronics' ? ' home-top--electronics' : ''}`}
+      aria-label="Supermall delivery and search"
+    >
       <div className="home-services" aria-label="noon services">
         {serviceTiles.map((tile) => (
           <ServiceTile key={tile.label} label={tile.label} variant={tile.variant} />
         ))}
       </div>
 
-      <div className="home-delivery">
+      <div className={`home-delivery${activeTab === 'Electronics' ? ' home-delivery--electronics' : ''}`}>
         <div className="home-delivery__copy">
           <strong>⚡ 1 hr 15 mins delivery</strong>
           <span>
@@ -264,29 +271,75 @@ function HomeHeader() {
       </label>
 
       <nav className="home-tabs" aria-label="Homepage departments">
-        {topTabs.map((tab) => (
-          <button className={`home-tab${tab.active ? ' home-tab--active' : ''}`} key={tab.label}>
-            <img src={tab.icon} alt="" className="home-tab__icon" />
-            <span>{tab.label}</span>
-          </button>
-        ))}
+        {topTabs.map((tab) => {
+          const isActive = activeTab === tab.label;
+
+          return (
+            <button
+              aria-pressed={isActive}
+              className={`home-tab${isActive ? ' home-tab--active' : ''}`}
+              key={tab.label}
+              onClick={() => onTabChange(tab.label)}
+            >
+              <img
+                src={isActive ? tab.icon.active : tab.icon.default}
+                alt=""
+                className="home-tab__icon"
+                draggable={false}
+              />
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
       </nav>
     </section>
   );
 }
 
-function HeroCategories() {
+function HeroCategories({ activeTab }: { activeTab: TopTab }) {
+  const isElectronics = activeTab === 'Electronics';
+  const categories = isElectronics ? electronicsHeroCategories : heroCategories;
+
   return (
-    <section className="home-hero" aria-label="Fast delivery categories">
-      <div className="home-hero__headline">
-        <SparkleIcon size={24} color="rgba(255,255,255,0.25)" aria-hidden="true" />
-        <h1>Get everything</h1>
-        <SparkleIcon size={24} color="rgba(255,255,255,0.25)" aria-hidden="true" />
-      </div>
-      <p>at lightning speed ⚡</p>
-      <div className="home-hero__rail">
-        {heroCategories.map((category) => (
-          <Link to="/shop" className="home-hero-card" key={category.label}>
+    <section
+      className={`home-hero${isElectronics ? ' home-hero--electronics' : ''}`}
+      aria-label={isElectronics ? 'Electronics highlights' : 'Fast delivery categories'}
+    >
+      {isElectronics ? (
+        <>
+          <img
+            src={IMG_ELECTRONICS_HERO_BG}
+            alt=""
+            className="home-hero__backdrop"
+            loading="lazy"
+          />
+          <div className="home-hero__promo">
+            <h1 className="home-hero__promo-title">Tech That Moves Fast</h1>
+            <img
+              src={IMG_ELECTRONICS_HERO_ACCENT}
+              alt=""
+              className="home-hero__promo-badge"
+              loading="lazy"
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="home-hero__headline">
+            <SparkleIcon size={24} color="rgba(255,255,255,0.25)" aria-hidden="true" />
+            <h1>Get everything</h1>
+            <SparkleIcon size={24} color="rgba(255,255,255,0.25)" aria-hidden="true" />
+          </div>
+          <p>at lightning speed ⚡</p>
+        </>
+      )}
+      <div className={`home-hero__rail${isElectronics ? ' home-hero__rail--electronics' : ''}`}>
+        {categories.map((category) => (
+          <Link
+            to="/shop"
+            className={`home-hero-card${isElectronics ? ' home-hero-card--electronics' : ''}`}
+            key={category.label}
+          >
             <span>{category.label}</span>
             <img src={category.image} alt="" loading="lazy" />
           </Link>
@@ -401,11 +454,13 @@ function ShopByCategory() {
 }
 
 export default function HomePage() {
+  const [activeTab, setActiveTab] = useState<TopTab>('All');
+
   return (
     <PageTransition>
       <div className="home-page">
-        <HomeHeader />
-        <HeroCategories />
+        <HomeHeader activeTab={activeTab} onTabChange={setActiveTab} />
+        <HeroCategories activeTab={activeTab} />
         <ProductRail title="Recommended for you" />
         <ShopByCategory />
         <ProductRail title="New arrivals" />
