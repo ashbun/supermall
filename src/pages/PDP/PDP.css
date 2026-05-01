@@ -12,7 +12,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding-bottom: 188px;
-  background: #fdfdfe;
+  background: #f8f8f8;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -95,15 +95,20 @@
   padding: 16px;
   border-radius: 16px;
   background: var(--colour-neutral-white);
-  box-shadow: 0 8px 24px rgba(16, 22, 40, 0.05);
+  box-shadow: none;
+}
+
+.pdp-card {
+  margin-top: 12px;
 }
 
 .pdp-card--summary {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin: 0;
-  border-radius: 16px 16px 0 0;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  border-top-left-radius: 0;
   box-shadow: none;
 }
 
@@ -551,6 +556,7 @@
   padding: 12px;
   border-radius: 16px;
   background: var(--colour-neutral-white);
+  background-image: none;
   box-shadow: none;
   overflow: hidden;
 }

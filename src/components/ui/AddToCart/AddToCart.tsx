@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import type { MouseEvent } from 'react';
 import { MinusIcon, PlusIcon, TrashIcon } from '../icons';
 import './AddToCart.css';
 
@@ -9,13 +10,23 @@ interface AddToCartProps {
 }
 
 export function AddToCart({ count, onAdd, onRemove }: AddToCartProps) {
+  function handleAddClick(event: MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation();
+    onAdd();
+  }
+
+  function handleRemoveClick(event: MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation();
+    onRemove();
+  }
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       {count === 0 ? (
         <motion.button
           key="idle"
           className="atc atc--idle"
-          onClick={onAdd}
+          onClick={handleAddClick}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
@@ -36,7 +47,7 @@ export function AddToCart({ count, onAdd, onRemove }: AddToCartProps) {
         >
           <button
             className="atc__action"
-            onClick={onRemove}
+            onClick={handleRemoveClick}
             aria-label="Remove one"
           >
             {count === 1
@@ -56,7 +67,7 @@ export function AddToCart({ count, onAdd, onRemove }: AddToCartProps) {
           </motion.span>
           <button
             className="atc__action"
-            onClick={onAdd}
+            onClick={handleAddClick}
             aria-label="Add one more"
           >
             <PlusIcon size={24} color="#fff" />
